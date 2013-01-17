@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+
+
+<project name="Double Trouble Dice" default="Compile Main" basedir="">
+
+	<description>Build file for Double Trouble Dice</description>
+
+	
+	<!-- ==========================================================================	-->
+	<!-- PROPERTIES -->
+
+	<!-- project folders -->
+	<property name="bin.dir" location="${basedir}/bin" />
+	<property name="flash.dir" location="${bin.dir}/swf" />
+	<property name="asdoc.output.dir" location="${basedir}/asdoc" />
+	<property name="src.dir" location="${basedir}/src" />
+	<property name="dist.dir" location="${basedir}/build" />
+	
+	<!-- swc folders -->
+	<property name="external.swc.dir" location="${basedir}/swc" />
+	
+	<!-- deploy locations -->
+	<property name="deploy.dir" location="c:/xampp/htdocs/doubletrouble/" />
+	<property name="deployHTTP" value="http://localhost/doubletrouble/" />
+	
+	<!-- remote testing -->
+	<property name="remote.ftp.server" value="dwillonline.com" />
+	<property name="remote.ftp.username" value="dlwillia1983" />
+	<property name="remote.ftp.password" value="The4mation" />
+	<property name="remote.dir" value="clients/doubletroubledice/" />
+	
+	<!-- distribution settings -->
+	<property name="dist.basename" value="doubletrouble" />
+	<property name="dist.ftp.server" value="dwillonline.com" />
+	<property name="dist.ftp.username" value="dlwillia1983" />
+	<property name="dist.ftp.password" value="The4mation" />
+	<property name="dist.dir" value="clients/doubletroubledice/build/" />
+	
+	<!-- flex sdk -->
+	<property name="flexsdk.dir" location="C:/Program Files/FlashDevelop/Library/AS3/frameworks/Flex3/sdk/" />
+	<property name="flexsdk.bin.dir" location="${flexsdk.dir}/bin" />
+	<property name="flexsdk.lib.dir" location="${flexsdk.dir}/frameworks/libs" />
+	<property name="flexsdk.locale" value="en_US" />
+	<property name="flexsdk.locale.dir" location="${flexsdk.dir}/frameworks/locale/{locale}" />
+	<property name="asdoc.exe" location="${flexsdk.bin.dir}/asdoc.exe" />
+	<property name="compc.exe" location="${flexsdk.bin.dir}/compc.exe" />
+	<property name="mxmlc.exe" location="${flexsdk.bin.dir}/mxmlc.exe" />
+	<property name="target.player" value="9.0.0" />
+	
+	<!-- flex tasks -->
+	<taskdef resource="flexTasks.tasks" classpath="${flexsdk.dir}/ant/lib/flexTasks.jar" />
+	<property name="FLEX_HOME" location="${flexsdk.dir}" />
+	
+	<!-- browsers -->
+	<property name="firefox" location="C:/Program Files/Mozilla Firefox/firefox.exe" />
+	<property name="iexplorer" location="C:/Program Files/Internet Explorer/iexplorer.exe" />
+	<property name="chrome" location="C:/Users/DWiLL/AppData/Local/Google/Chrome/Application/chrome.exe" />
+	
+	
+	<!-- ==========================================================================	-->
+	<!-- COMPILE TARGETS -->
+	
+	<!-- target: Compile All -->
+	<target name="Compile All" depends="Compile Main" description="Compiles all AS files with the mxmlc compiler" />
+	
+	<!-- target: Compile Main -->	
+	<target name="Compile Main" description="Compiles the Main.as into a SWF" depends="Update Build Version">
+		<mxmlc file="${src.dir}/com/doubletroubledice/core/Main.as" output="${bin.dir}/swf/doubletroubledice.swf" target-player="${target.player}">
+			<source-path path-element="${src.dir}" />
+		</mxmlc>
+	</target>
+	
+	
+	<!-- ==========================================================================	-->
+	<!-- UTILITY TARGETS -->
+		
+	<!-- target: Clean -->
+	<target name="Clean" description="Deletes the deploy directory and all sub directories">
+		<delete dir="${deploy.dir}"/>
+	</target>	
+
+	<!-- target: Create Folders -->
+	<target name="Create Folders" description="Creates project default folders">
+		<!-- project folders -->
+		<mkdir dir="${deploy.dir}" />
+		<mkdir dir="${dist.dir}" />
+		<mkdir dir="${asdoc.output.dir}" />
+		<mkdir dir="${src.dir}" />
+		
+		<!-- bin folders -->
+		<mkdir dir="${bin.dir}" />
+		<mkdir dir="${bin.dir}/images" />
+		<mkdir dir="${bin.dir}/js" />
+		<mkdir dir="${bin.dir}/xml" />
+		<mkdir dir="${bin.dir}/css" />
+		<mkdir dir="${flash.dir}" />
+	</target>
+	
+	<!-- target: Create Documentation -->
+	<target name="Create Documentation" description="Creates AS Class Documentation">
+		<propertyset id="tdate"></propertyset>
+		<tstamp>
+			<format property="tdate" pattern="yyyy"/>
+		</tstamp>
+		<exec executable="${asdoc.exe}" dir="${basedir}" failonerror="false">
+			<arg line="-doc-sources '${basedir}\src\com'" />
+			<arg line="-source-path '${src.dir}'" />
+			<arg line="-output '${asdoc.output.dir}'" />
+			<arg line="-library-path '${external.swc.dir}'" />
+			<arg line="-target-player '${target.player}'" />
+			<arg line="-main-title 'Double Trouble Dice ASDoc'" />
+			<arg line="-window-title 'Double Trouble Dice ASDoc'" />
+			<arg line="-footer 'Copyright ${tdate} Derrick Williams'" />
+		</exec>		
+	</target>
+	
+	<!-- target: Distribute Build -->
+	<target name="Distribute Build" description="Creates a zip of the latest files in the deploy directory">
+		
+		<!-- get the time stamp -->
+		<propertyset id="tdate"></propertyset>
+		<tstamp>
+			<format property="tdate" pattern="yyyyMMdd_hhmm"/>
+		</tstamp>
+		
+		<!-- create the zip file -->
+		<zip destfile="${dist.dir}/${dist.basename}_${tdate}.zip" basedir="${deploy.dir}"/>
+		
+		<!-- ftp the zip file -->
+		<ftp server="${dist.ftp.server}" userid="${dist.ftp.username}" password="${dist.ftp.password}" depends="true">
+			<fileset dir="${dist.dir}">
+				<exclude name="**/.settings/**" />
+			</fileset>
+		</ftp>
+	</target>
+
+	<!-- target: Move Assets -->
+	<target name="Move Assets" description="Copies files to the deploy directory">
+		<copy todir="${deploy.dir}">
+			<fileset dir="${basedir}/bin">
+				<exclude name="**/.settings/**" />
+				<exclude name="**/src/**" />
+				<exclude name="**/bin/**" />
+				<exclude name="**/lib/**" />
+				<exclude name="**/fonts/**" />
+				<exclude name="**/swc/**" />
+				<exclude name=".as3_classpath" />
+				<exclude name=".project" />
+				<exclude name=".as3proj" />
+			</fileset>
+		</copy>
+	</target>
+
+	<!-- target: Remote Testing FTP -->
+	<target name="Remote Testing FTP" description="FTPs the deply directory to the remote testing server">
+		<ftp server="${remote.ftp.server}" userid="${remote.ftp.username}" password="${remote.ftp.password}" remotedir="${remote.dir}" action="mkdir">
+		</ftp>
+		<ftp server="${remote.ftp.server}" userid="${remote.ftp.username}" password="${remote.ftp.password}" remotedir="${remote.dir}" depends="true">
+			<fileset dir="${deploy.dir}">
+				<exclude name="**/.settings/**" />
+			</fileset>
+		</ftp>
+	</target>
+	
+	<!-- target: Update Build Version -->
+	<target name="Update Build Version">
+		<propertyset id="tdate"></propertyset>
+		<tstamp>
+			<format property="tdate" pattern="yyyyMMdd hh:mm"/>
+		</tstamp>
+		<buildnumber file="build.number"/>
+		<echo>updating version to current datetime: ${tdate}</echo>
+		<replaceregexp byline="true">
+			<regexp pattern="public static const BUILD_DATE: String = \'([0-9]+)'"/>
+			<substitution expression="public static const BUILD_DATE: String = '${tdate}'"/>
+			<fileset dir="${src.dir}/">
+				<include name="Main.as.as"/>
+			</fileset>
+		</replaceregexp>
+		
+		<replaceregexp byline="true">
+			<regexp pattern="public static const BUILD_NUMBER: String = \'([0-9\.]+)'"/>
+			<substitution expression="public static const BUILD_NUMBER: String = '${build.number}'"/>
+			<fileset dir="${src.dir}/">
+				<include name="Main.as.as"/>
+			</fileset>
+		</replaceregexp>
+	</target>
+
+	
+	<!-- ==========================================================================	-->
+	<!-- BROWSER TARGETS -->
+	
+	<!-- target: FireFox View -->
+	<target name="FireFox View" depends="Move Assets" description="Opens the SWF HTML in the FireFox Browser">
+		<exec executable="${firefox}" spawn="true">
+			<arg value="${deployHTTP}" />
+		</exec>
+	</target>
+	
+	<!-- target: IE View -->
+	<target name="IE View" depends="Move Assets" description="Opens the SWF HTML in the IE Browser">
+		<exec executable="${iexplorer}" spawn="true">
+			<arg value="${deployHTTP}" />
+		</exec>
+	</target>
+	
+	<!-- target: Chrome View -->
+	<target name="Chrome View" depends="Move Assets" description="Opens the SWF HTML in the Chrome Browser">
+		<exec executable="${chrome}" spawn="true">
+			<arg value="${deployHTTP}" />
+		</exec>
+	</target>
+	
+</project>

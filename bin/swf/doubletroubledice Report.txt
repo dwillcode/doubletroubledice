@@ -1,0 +1,138 @@
+﻿doubletroubledice.swf Movie Report
+-----------------------------------
+
+Frame #    Frame Bytes    Total Bytes    Scene
+-------    -----------    -----------    -----
+      1         171108         171108    Scene 1 (AS 3.0 Classes Export Frame)
+
+Scene      Shape Bytes    Text Bytes    ActionScript Bytes
+-------    -----------    ----------    ------------------
+Scene 1              0             0                 74471
+
+Symbol                                Shape Bytes    Text Bytes    ActionScript Bytes
+----------------------------------    -----------    ----------    ------------------
+jest                                         1905             0                     0
+Oodles Option Radio Up State                    0            92                     0
+Oodles Option Radio Selected State              0            92                     0
+help_mc                                         0          1844                     0
+playOptions_mc                                  0             0                     0
+Symbol 92                                       0             0                     0
+double6s_mc                                     0             0                     0
+box_mc                                         28             0                     0
+scoreText_mc                                    0            40                     0
+rollText2_mc                                    0            39                     0
+rollText3_mc                                    0            39                     0
+Oodles_mc                                       0             0                     0
+Oodles2_mc                                      0             0                     0
+spin_mc                                         0             0                     0
+bg                                              0             0                     0
+oneMult                                         0             0                     0
+fourMult                                        0             0                     0
+threeMult                                       0             0                     0
+twoMulti                                        0             0                     0
+rollScore                                       0             0                     0
+totalScore                                      0             0                     0
+zeroMult                                        0             0                     0
+twoDoubles                                      0             0                     0
+zeroDoubles                                     0             0                     0
+lost                                            0             0                     0
+doublesIcon                                     0             0                     0
+bonus100_mc                                     0             0                     0
+bonus200_mc                                     0             0                     0
+bonus50_mc                                      0             0                     0
+150Bonus                                        0             0                     0
+Score Message                                   0            35                     0
+plusMessage_mc                                  0            38                     0
+bonusMessage_mc                                 0             0                     0
+Joker Bar                                       0             0                     0
+Game Title Masthead                             0             0                     0
+startScreenLogo                                 0             0                     0
+Main Background                                30             0                     0
+Jokers Progress Bar                             0             0                     0
+Game Board                                     41             0                     0
+purpleBox_mc                                   40             0                     0
+whiteBox_mc                                    30             0                     0
+Dice Board                                      0             0                     0
+contactBlueTab                                  0             0                     0
+Score Board                                     0            87                     0
+gradOutline_mc                                 46             0                     0
+<Path>_14                                     233             0                     0
+<Path>_12                                      46             0                     0
+<Path>_10_0                                    43             0                     0
+<Path>_8_0                                     45             0                     0
+<Path>_6_0                                     43             0                     0
+Header Banner                                 254             0                     0
+headline_mc                                     0             0                     0
+Cash Out Button Up State                      169             0                     0
+Cash Out Button Disabled State                170            47                     0
+playAgainUI                                     0             0                     0
+StartHelp                                       0            42                     0
+StartPlay                                       0            40                     0
+startGame                                       0            51                     0
+endGameUI_mc                                    0            48                     0
+helpClose_mc                                    0            43                     0
+playClose_mc                                    0            43                     0
+statScreen                                      0             0                     0
+Game End Screen                                 0           490                     0
+Game Start Screen                               0             0                     0
+jokerBlack                                      0             0                     0
+jokerColor                                      0             0                     0
+Joker                                           0             0                     0
+rollBtn2_mc                                     0             0                     0
+star1                                         198             0                     0
+star2                                         186             0                     0
+star                                            0             0                     0
+Star Animation                                  0             0                     0
+contactdarkBlue_mc                             52             0                     0
+contactlightBlue_mc                            52             0                     0
+endScreenBlueTab                                0             0                     0
+rollText_mc                                   215             0                     0
+Roll Button Up State                            0             0                     0
+Roll Button Disabled State                      0             0                     0
+joker_mc                                        0             0                     0
+multOne_mc                                      0             0                     0
+multTwo_mc                                      0             0                     0
+multThree_mc                                    0             0                     0
+multFour_mc                                     0             0                     0
+soundIcon_mc                                  143             0                     0
+Mute Button Unmuted State                       0             0                     0
+Music Unmuted State                             0            51                     0
+Sound Unmuted State                             0            51                     0
+Mute Button Muted State                         0             0                     0
+Music Muted State                               0            53                     0
+Sound Muted State                             209            53                     0
+oodlesIcon_mc                                   0             0                     0
+oodlesIcon2_mc                                  0             0                     0
+
+Font Name    Bytes         Characters
+---------    ----------    ----------
+ArialMT           13232     !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~ ˆ˜–—‘’‚“”„†‡•…‰‹›€™
+
+ActionScript Bytes    Location
+------------------    --------
+             74471    Scene 1:Frame 1
+
+Bitmap            Compressed    Original      Compression
+--------------    ----------    ----------    -----------
+joker2.jpg              6502         32400    Imported JPEG=102
+gsn_logo.jpg            2735         32400    Imported JPEG=102
+oodles2.png             1015          2688    Lossless
+headline.png           14185        260592    JPEG Quality=80
+cashOodles.png          1575          9540    Lossless
+2x.png                  1574         12144    Lossless
+3x.png                  1617         11868    Lossless
+4x.png                  1546         13160    Lossless
+150Bonus.png            1926         17280    Lossless
+50Bonus.png             1737         17892    Lossless
+200Bonus.png            1818         17700    Lossless
+100Bonus.png            1839         19040    Lossless
+doubles.png             8385        117480    Lossless
+lost.png                9445        164248    Lossless
+double6s.png            6165         68640    JPEG Quality=80
+2xDoubles.png           1389          9676    Lossless
+twoMult.png             1599         14112    Lossless
+threeMult.png           1646         14400    Lossless
+
+
+
+

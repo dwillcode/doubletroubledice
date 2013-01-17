@@ -1,0 +1,1 @@
+﻿package com.dfast.sounds {		/**	 * ...	 * @author Derrick Williams	 */	public class ChannelType 	{		public static const OTHER:String = "other";		public static const FX:String = "fx";		public static const MUSIC:String = "music";	}	}

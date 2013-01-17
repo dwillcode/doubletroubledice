@@ -1,0 +1,1 @@
+﻿package com.doubletroubledice.valueObjects {			public class DiceValues 	{		public var dice1:int = 1;		public var dice2:int = 1;				public function DiceValues() {}	}	}

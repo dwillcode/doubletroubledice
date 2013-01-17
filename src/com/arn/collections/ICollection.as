@@ -1,0 +1,1 @@
+﻿package com.arn.collections{    	import com.arn.iterators.IIterator;	public interface ICollection	{     	function iterator( type:String = null) : IIterator; 	} }
